@@ -34,7 +34,7 @@ BuildRequires:	kf6-krunner-devel >= %{kframever}
 BuildRequires:	ktextaddons-devel >= 1.5.4
 BuildRequires:	ninja
 BuildRequires:	qt6-build >= %{qtver}
-BuildRequires:	rpmbuild(macros) >= 1.164
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xapian-core-devel
