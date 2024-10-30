@@ -13,7 +13,7 @@ Summary:	Akonadi Search
 Summary(pl.UTF-8):	Komponent wyszukiwania dla Akonadi
 Name:		ka6-%{kaname}
 Version:	24.08.2
-Release:	2
+Release:	3
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
@@ -31,6 +31,7 @@ BuildRequires:	kf6-kcalendarcore-devel >= %{kf_ver}
 BuildRequires:	kf6-kcmutils-devel >= %{kf_ver}
 BuildRequires:	kf6-kconfig-devel >= %{kf_ver}
 BuildRequires:	kf6-kcontacts-devel >= %{kf_ver}
+BuildRequires:	kf6-kcoreaddons-devel >= %{kf_ver}
 BuildRequires:	kf6-kcrash-devel >= %{kf_ver}
 BuildRequires:	kf6-kdbusaddons-devel >= %{kf_ver}
 BuildRequires:	kf6-ki18n-devel >= %{kf_ver}
@@ -44,6 +45,17 @@ BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xapian-core-devel
 BuildRequires:	xz
+Requires:	Qt6Core >= %{qt_ver}
+Requires:	ka6-akonadi >= %{ka_ver}
+Requires:	ka6-akonadi-mime >= %{ka_ver}
+Requires:	ka6-kmime >= %{ka_ver}
+Requires:	kf6-kcmutils >= %{kf_ver}
+Requires:	kf6-kconfig >= %{kf_ver}
+Requires:	kf6-kcontacts >= %{kf_ver}
+Requires:	kf6-kcoreaddons >= %{kf_ver}
+Requires:	kf6-ki18n >= %{kf_ver}
+Requires:	kf6-krunner >= %{kf_ver}
+Requires:	kf6-ktextaddons >= 1.5.4
 Obsoletes:	ka5-akonadi-search < 24
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
