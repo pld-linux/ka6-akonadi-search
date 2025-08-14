@@ -3,7 +3,7 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeappsver	25.04.3
+%define		kdeappsver	25.08.0
 # packages version, not cmake config version (which is 6.2.2)
 %define		ka_ver		%{version}
 %define		kf_ver		6.3.0
@@ -12,12 +12,12 @@
 Summary:	Akonadi Search
 Summary(pl.UTF-8):	Komponent wyszukiwania dla Akonadi
 Name:		ka6-%{kaname}
-Version:	25.04.3
+Version:	25.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	f526c6903ee2122a645d4da49f6db891
+# Source0-md5:	83d03881eb01fbd4e28284f536a33b90
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qt_ver}
 BuildRequires:	Qt6Test-devel >= %{qt_ver}
