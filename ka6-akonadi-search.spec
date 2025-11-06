@@ -3,7 +3,7 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeappsver	25.08.2
+%define		kdeappsver	25.08.3
 # packages version, not cmake config version (which is 6.2.2)
 %define		ka_ver		%{version}
 %define		kf_ver		6.3.0
@@ -12,12 +12,12 @@
 Summary:	Akonadi Search
 Summary(pl.UTF-8):	Komponent wyszukiwania dla Akonadi
 Name:		ka6-%{kaname}
-Version:	25.08.2
-Release:	2
+Version:	25.08.3
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	1b0955d34b76581a15a77fba01d785ff
+# Source0-md5:	fb999d1163e164689cda75fbd03f14f9
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qt_ver}
 BuildRequires:	Qt6Test-devel >= %{qt_ver}
@@ -119,21 +119,21 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/akonadi_html_to_text
 %attr(755,root,root) %{_bindir}/akonadi_indexing_agent
-%attr(755,root,root) %{_libdir}/libKPim6AkonadiSearchCore.so.*.*.*
+%{_libdir}/libKPim6AkonadiSearchCore.so.*.*.*
 %ghost %{_libdir}/libKPim6AkonadiSearchCore.so.6
-%attr(755,root,root) %{_libdir}/libKPim6AkonadiSearchDebug.so.*.*.*
+%{_libdir}/libKPim6AkonadiSearchDebug.so.*.*.*
 %ghost %{_libdir}/libKPim6AkonadiSearchDebug.so.6
-%attr(755,root,root) %{_libdir}/libKPim6AkonadiSearchPIM.so.*.*.*
+%{_libdir}/libKPim6AkonadiSearchPIM.so.*.*.*
 %ghost %{_libdir}/libKPim6AkonadiSearchPIM.so.6
-%attr(755,root,root) %{_libdir}/libKPim6AkonadiSearchXapian.so.*.*.*
+%{_libdir}/libKPim6AkonadiSearchXapian.so.*.*.*
 %ghost %{_libdir}/libKPim6AkonadiSearchXapian.so.6
-%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/krunner/kcms/kcm_krunner_pimcontacts.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/krunner/krunner_pimcontacts.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/pim6/akonadi/akonadi_search_plugin.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/pim6/akonadi/calendarsearchstore.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/pim6/akonadi/contactsearchstore.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/pim6/akonadi/emailsearchstore.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/pim6/akonadi/notesearchstore.so
+%{_libdir}/qt6/plugins/kf6/krunner/kcms/kcm_krunner_pimcontacts.so
+%{_libdir}/qt6/plugins/kf6/krunner/krunner_pimcontacts.so
+%{_libdir}/qt6/plugins/pim6/akonadi/akonadi_search_plugin.so
+%{_libdir}/qt6/plugins/pim6/akonadi/calendarsearchstore.so
+%{_libdir}/qt6/plugins/pim6/akonadi/contactsearchstore.so
+%{_libdir}/qt6/plugins/pim6/akonadi/emailsearchstore.so
+%{_libdir}/qt6/plugins/pim6/akonadi/notesearchstore.so
 %{_datadir}/akonadi/agents/akonadiindexingagent.desktop
 %{_datadir}/qlogging-categories6/akonadi-search.categories
 %{_datadir}/qlogging-categories6/akonadi-search.renamecategories
