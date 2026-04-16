@@ -3,7 +3,7 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeappsver	25.12.3
+%define		kdeappsver	26.04.0
 # packages version, not cmake config version (which is 6.2.2)
 %define		ka_ver		%{version}
 %define		kf_ver		6.3.0
@@ -12,12 +12,12 @@
 Summary:	Akonadi Search
 Summary(pl.UTF-8):	Komponent wyszukiwania dla Akonadi
 Name:		ka6-%{kaname}
-Version:	25.12.3
-Release:	3
+Version:	26.04.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	5191ad6cf73e54533349276d5514e5ed
+# Source0-md5:	3ea4b536d3692958711cde09c798042f
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qt_ver}
 BuildRequires:	Qt6Test-devel >= %{qt_ver}
@@ -37,7 +37,7 @@ BuildRequires:	kf6-kdbusaddons-devel >= %{kf_ver}
 BuildRequires:	kf6-ki18n-devel >= %{kf_ver}
 BuildRequires:	kf6-kio-devel >= %{kf_ver}
 BuildRequires:	kf6-krunner-devel >= %{kf_ver}
-BuildRequires:	kf6-ktextaddons-devel >= 1.8.0
+BuildRequires:	kf6-ktextaddons-devel >= 2.0.0
 BuildRequires:	ninja
 BuildRequires:	qt6-build >= %{qt_ver}
 BuildRequires:	rpmbuild(macros) >= 1.736
@@ -55,7 +55,7 @@ Requires:	kf6-kcontacts >= %{kf_ver}
 Requires:	kf6-kcoreaddons >= %{kf_ver}
 Requires:	kf6-ki18n >= %{kf_ver}
 Requires:	kf6-krunner >= %{kf_ver}
-Requires:	kf6-ktextaddons >= 1.8.0
+Requires:	kf6-ktextaddons >= 2.0.0
 %requires_eq_to Qt6Core Qt6Core-devel
 Obsoletes:	ka5-akonadi-search < 24
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -133,7 +133,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/qt6/plugins/pim6/akonadi/calendarsearchstore.so
 %{_libdir}/qt6/plugins/pim6/akonadi/contactsearchstore.so
 %{_libdir}/qt6/plugins/pim6/akonadi/emailsearchstore.so
-%{_libdir}/qt6/plugins/pim6/akonadi/notesearchstore.so
 %{_datadir}/akonadi/agents/akonadiindexingagent.desktop
 %{_datadir}/qlogging-categories6/akonadi-search.categories
 %{_datadir}/qlogging-categories6/akonadi-search.renamecategories
