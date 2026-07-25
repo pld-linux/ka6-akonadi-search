@@ -13,15 +13,18 @@ Summary:	Akonadi Search
 Summary(pl.UTF-8):	Komponent wyszukiwania dla Akonadi
 Name:		ka6-%{kaname}
 Version:	26.04.3
-Release:	1
+Release:	2
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
 # Source0-md5:	b125bfadddf481fc45aea216e5f0f900
+Source1:	%{kaname}-vendor-crates-%{version}.tar.xz
+# Source1-md5:	7991d99d9ad4d1d034b535e39d568f98
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qt_ver}
 BuildRequires:	Qt6Test-devel >= %{qt_ver}
 BuildRequires:	cmake >= 3.20
+BuildRequires:	corrosion
 BuildRequires:	gettext-devel
 BuildRequires:	ka6-akonadi-devel >= %{ka_ver}
 BuildRequires:	ka6-akonadi-mime-devel >= %{ka_ver}
@@ -87,14 +90,27 @@ Header files for %{kaname} development.
 Pliki nagłówkowe dla programistów używających %{kaname}.
 
 %prep
-%setup -q -n %{kaname}-%{version}
+%setup -q -n %{kaname}-%{version} -a1
+# Use our offline registry
+export CARGO_HOME="$(pwd)/.cargo"
+
+mkdir -p "$CARGO_HOME"
+cat >.cargo/config <<EOF
+[source.crates-io]
+replace-with = 'vendored-sources'
+
+[source.vendored-sources]
+directory = '$PWD/vendor'
+EOF
 
 %build
+export CARGO_HOME="$(pwd)/.cargo"
 %cmake -B build \
 	-G Ninja \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DKDE_INSTALL_DOCBUNDLEDIR=%{_kdedocdir} \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+	-DRust_CARGO_TARGET=%cargo_target
 
 %ninja_build -C build
 
@@ -104,6 +120,7 @@ ctest --test-dir build
 
 %install
 rm -rf $RPM_BUILD_ROOT
+export CARGO_HOME="$(pwd)/.cargo"
 
 %ninja_install -C build
 
