@@ -3,23 +3,23 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeappsver	26.04.3
+%define		kdeappsver	26.08.0
 # packages version, not cmake config version (which is 6.2.2)
 %define		ka_ver		%{version}
-%define		kf_ver		6.3.0
+%define		kf_ver		6.29.0
 %define		qt_ver		6.6.0
 %define		kaname		akonadi-search
 Summary:	Akonadi Search
 Summary(pl.UTF-8):	Komponent wyszukiwania dla Akonadi
 Name:		ka6-%{kaname}
-Version:	26.04.3
-Release:	2
+Version:	26.08.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	b125bfadddf481fc45aea216e5f0f900
+# Source0-md5:	51dd3a64634313edfd8ec4d5d9e999d0
 Source1:	%{kaname}-vendor-crates-%{version}.tar.xz
-# Source1-md5:	7991d99d9ad4d1d034b535e39d568f98
+# Source1-md5:	3497ab861ceb01624336a803e856df43
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qt_ver}
 BuildRequires:	Qt6Test-devel >= %{qt_ver}
@@ -28,7 +28,6 @@ BuildRequires:	corrosion
 BuildRequires:	gettext-devel
 BuildRequires:	ka6-akonadi-devel >= %{ka_ver}
 BuildRequires:	ka6-akonadi-mime-devel >= %{ka_ver}
-BuildRequires:	ka6-kmime-devel >= %{ka_ver}
 BuildRequires:	kf6-extra-cmake-modules >= %{kf_ver}
 BuildRequires:	kf6-kcalendarcore-devel >= %{kf_ver}
 BuildRequires:	kf6-kcmutils-devel >= %{kf_ver}
@@ -39,8 +38,9 @@ BuildRequires:	kf6-kcrash-devel >= %{kf_ver}
 BuildRequires:	kf6-kdbusaddons-devel >= %{kf_ver}
 BuildRequires:	kf6-ki18n-devel >= %{kf_ver}
 BuildRequires:	kf6-kio-devel >= %{kf_ver}
+BuildRequires:	kf6-kmime-devel >= %{kf_ver}
 BuildRequires:	kf6-krunner-devel >= %{kf_ver}
-BuildRequires:	kf6-ktextaddons-devel >= 2.0.0
+BuildRequires:	kf6-ktextaddons-devel >= 2.1.2
 BuildRequires:	ninja
 BuildRequires:	qt6-build >= %{qt_ver}
 BuildRequires:	rpmbuild(macros) >= 1.736
@@ -51,14 +51,14 @@ BuildRequires:	xz
 Requires:	Qt6Core >= %{qt_ver}
 Requires:	ka6-akonadi >= %{ka_ver}
 Requires:	ka6-akonadi-mime >= %{ka_ver}
-Requires:	ka6-kmime >= %{ka_ver}
 Requires:	kf6-kcmutils >= %{kf_ver}
 Requires:	kf6-kconfig >= %{kf_ver}
 Requires:	kf6-kcontacts >= %{kf_ver}
 Requires:	kf6-kcoreaddons >= %{kf_ver}
 Requires:	kf6-ki18n >= %{kf_ver}
+Requires:	kf6-kmime >= %{kf_ver}
 Requires:	kf6-krunner >= %{kf_ver}
-Requires:	kf6-ktextaddons >= 2.0.0
+Requires:	kf6-ktextaddons >= 2.1.2
 %requires_eq_to Qt6Core Qt6Core-devel
 Obsoletes:	ka5-akonadi-search < 24
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -77,10 +77,10 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	Qt6Core-devel >= %{qt_ver}
 Requires:	ka6-akonadi-devel >= %{ka_ver}
 Requires:	ka6-akonadi-mime-devel >= %{ka_ver}
-Requires:	ka6-kmime-devel >= %{ka_ver}
 Requires:	kf6-kcalendarcore-devel >= %{kf_ver}
 Requires:	kf6-kcontacts-devel >= %{kf_ver}
 Requires:	kf6-kcoreaddons-devel >= %{kf_ver}
+Requires:	kf6-kmime-devel >= %{kf_ver}
 Obsoletes:	ka5-akonadi-search-devel < 24
 
 %description devel
